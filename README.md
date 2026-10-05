@@ -182,3 +182,10 @@ docker-compose up --build
 
 ## 📄 License
 This project is open-source under the MIT License.
+<img width="860" height="493" alt="image" src="https://github.com/user-attachments/assets/2270bc3b-b781-4e51-8ad7-4cbf3fdacddd" />
+
+<img width="832" height="482" alt="image" src="https://github.com/user-attachments/assets/0f3092be-b2bf-42ac-84bb-42439bcf7ec4" />
+
+<img width="856" height="459" alt="image" src="https://github.com/user-attachments/assets/49ed6c40-e33a-46bb-9212-b9413907ea72" />
+
+<img width="590" height="410" alt="image" src="https://github.com/user-attachments/assets/16e4edc3-db8e-4446-9b64-cb58597e61d1" />
