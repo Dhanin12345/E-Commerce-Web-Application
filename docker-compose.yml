@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: smartcart-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: smartcart_db
+      POSTGRES_USER: smartcart_user
+      POSTGRES_PASSWORD: enterprise_secure_password_2026
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U smartcart_user -d smartcart_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: smartcart-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: smartcart-api-gateway
+    restart: unless-stopped
+    environment:
+      - DEBUG=False
+      - SECRET_KEY=enterprise_production_super_secret_key_2026
+      - DATABASE_URL=postgres://smartcart_user:enterprise_secure_password_2026@postgres:5432/smartcart_db
+      - REDIS_URL=redis://redis:6379/0
+      - CORS_ALLOWED_ORIGINS=http://localhost:5173,http://localhost:3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/media:/app/media
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: smartcart-event-worker
+    restart: unless-stopped
+    command: python manage.py seed_enterprise
+    environment:
+      - DEBUG=False
+      - DATABASE_URL=postgres://smartcart_user:enterprise_secure_password_2026@postgres:5432/smartcart_db
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - api
+
+  frontend:
+    image: node:20-alpine
+    container_name: smartcart-frontend-pwa
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    command: sh -c "npm install && npm run build && npx serve -s dist -l 5173"
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
+  redis_data:

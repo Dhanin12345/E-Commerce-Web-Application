@@ -1,0 +1,120 @@
+[
+  {
+    "model": "categories.category",
+    "pk": 1,
+    "fields": {
+      "name": "Electronics",
+      "slug": "electronics",
+      "description": "High-performance gadgets, laptops, smartphones, and accessories."
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 2,
+    "fields": {
+      "name": "Audio & Sound",
+      "slug": "audio-sound",
+      "description": "Premium noise-cancelling headphones, wireless earbuds, and studio speakers."
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 3,
+    "fields": {
+      "name": "Wearables",
+      "slug": "wearables",
+      "description": "Smart watches, fitness bands, and health tracking wearables."
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 4,
+    "fields": {
+      "name": "Home Office",
+      "slug": "home-office",
+      "description": "Ergonomic keyboards, 4K monitors, and productivity setups."
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+      "category": 2,
+      "name": "AuraSound Pro Noise-Cancelling Headphones",
+      "slug": "aurasound-pro-noise-cancelling-headphones",
+      "sku": "AURA-SND-001",
+      "description": "Immerse yourself in high-fidelity acoustics with hybrid active noise cancellation, 40-hour battery life, and plush memory foam cushions.",
+      "price": "299.99",
+      "discount_price": "249.99",
+      "stock": 45,
+      "rating_avg": "4.85",
+      "reviews_count": 128,
+      "is_active": true
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+      "category": 3,
+      "name": "PulseTitan Ultra Smartwatch",
+      "slug": "pulsetitan-ultra-smartwatch",
+      "sku": "PULSE-TITAN-02",
+      "description": "Aerospace-grade titanium chassis with dual-frequency GPS, biometric sensors, ECG, and bright always-on sapphire AMOLED display.",
+      "price": "449.00",
+      "discount_price": "399.00",
+      "stock": 28,
+      "rating_avg": "4.90",
+      "reviews_count": 86,
+      "is_active": true
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+      "category": 4,
+      "name": "NovaKey Pro Wireless Mechanical Keyboard",
+      "slug": "novakey-pro-wireless-mechanical-keyboard",
+      "sku": "NOVA-KEY-87",
+      "description": "Hot-swappable custom lubricated switches, CNC anodized aluminum frame, RGB backlighting, and Bluetooth 5.2 multi-device switching.",
+      "price": "159.50",
+      "discount_price": "139.99",
+      "stock": 60,
+      "rating_avg": "4.78",
+      "reviews_count": 64,
+      "is_active": true
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "name": "Zenith 4K UHD Ultra-Slim Monitor 27-inch",
+      "slug": "zenith-4k-uhd-monitor-27",
+      "sku": "ZEN-4K-27",
+      "description": "Stunning IPS display covering 99% DCI-P3 color gamut with 90W USB-C power delivery, HDR400, and bezel-less design.",
+      "price": "499.99",
+      "discount_price": "449.99",
+      "stock": 20,
+      "rating_avg": "4.92",
+      "reviews_count": 42,
+      "is_active": true
+    }
+  },
+  {
+    "model": "coupons.coupon",
+    "pk": 1,
+    "fields": {
+      "code": "SMARTWELCOME",
+      "discount_percentage": "15.00",
+      "min_order_value": "50.00",
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": "2027-12-31T23:59:59Z",
+      "usage_limit": 500,
+      "times_used": 14,
+      "is_active": true
+    }
+  }
+]
